@@ -12,8 +12,16 @@ app.use(express.json())
 const PORT = process.env.port || 4000;
 
 app.get('/healthy', (req, res) => {
-   res.send('Server is healthy')
+    //    res.send('Server is healthy')
+
+    res.status(200).json(
+        {
+     success: true,
+     message: "Server is healthy"
+    }
+)
 })
+
 app.listen(PORT, () => {
     console.log('Server is running.');
 })
@@ -33,22 +41,22 @@ app.delete('/authors/:id', deleteAuthorById);
 
 app.get('/books', (req, res) => {
     res.send('GET ALL BOOKS')
- })
+})
 
- app.post('/books', createBooks);
+app.post('/books', createBooks);
 
- app.put('/books/:id', updateBookById);
+app.put('/books/:id', updateBookById);
 
- app.delete('/books/:id', deleteBookById);
+app.delete('/books/:id', deleteBookById);
 
- //USERS
+//USERS
 
- app.get('/users', (req, res) => {
+app.get('/users', (req, res) => {
     res.send('GET ALL USERS')
- })
+})
 
- app.post('/users', createUser);
+app.post('/users', createUser);
 
- app.put('/users/:id', updateUserById);
+app.put('/users/:id', updateUserById);
 
- app.delete('/users/:id', deleteUserById);
+app.delete('/users/:id', deleteUserById);

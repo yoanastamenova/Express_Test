@@ -5,16 +5,25 @@ export const createBooks =  (req: Request, res: Response) => {
     console.log(req.body.title);
     console.log(req.body.description);
     console.log(req.body.author);
- 
-    res.send('CREATE BOOK')
+    
+    res.json({
+        success: true,
+        message: 'CREATE BOOK'
+       })
 }
 
 export const updateBookById = (req: Request, res: Response) => {
     console.log(req.params.id);
 
-    res.send(`BOOK with id ${req.params.id} UPDATED`)
+    res.json({
+        success: true,
+        message: `BOOK UPDATED with id ${req.params.id}`
+       })
 }
 
 export const deleteBookById = (req: Request, res: Response) => {
-    res.send(`BOOK With id: ${req.params.id} DELETED`)
+    res.json({
+        success: true,
+        message: `BOOK DELETED With id: ${req.params.id}`
+       })
 }

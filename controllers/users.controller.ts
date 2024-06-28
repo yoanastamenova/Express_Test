@@ -6,15 +6,24 @@ export const createUser =  (req: Request, res: Response) => {
     console.log(req.body.email);
     console.log(req.body.password);
  
-    res.send('CREATE USER')
+    res.json({
+        success: true,
+        message: 'CREATE USER'
+    })
 }
 
 export const updateUserById = (req: Request, res: Response) => {
     console.log(req.params.id);
 
-    res.send(`USER with id ${req.params.id} UPDATED`)
+    res.json({
+        success: true,
+        message: `USER UPDATED with id ${req.params.id}`
+    })
 }
 
 export const deleteUserById = (req: Request, res: Response) => {
-    res.send(`USER with id: ${req.params.id} DELETED`)
+    res.json({
+        success: true,
+        message: `USER DELETED With id: ${req.params.id}`
+    })
 }
