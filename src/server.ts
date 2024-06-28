@@ -1,4 +1,6 @@
 import express from 'express';
+import { createAuthor, deleteAuthorById, updateAuthorById } from '../controllers/auto.controller';
+import { createBooks, deleteBookById, updateBookById } from '../controllers/books.controller';
 
 const app = express();
 
@@ -11,16 +13,20 @@ const PORT = process.env.port || 4000;
 app.get('/healthy', (req, res) => {
    res.send('Server is healthy')
 })
+app.listen(PORT, () => {
+    console.log('Server is running.');
+})
+
 
 //AUTHORS
 
-app.post('/authors', (req, res) => {
-    //recuperar la informacion de la req  
-   console.log(req.body)
+app.post('/authors', createAuthor)
 
-   res.send('CREATE AUTHOR')
-})
+//rutas dianmicas usamos req params
+app.put('/authors/:id', updateAuthorById);
 
+//DELETE
+app.delete('/authors/:id', deleteAuthorById);
 
 //BOOKS
 
@@ -28,18 +34,9 @@ app.get('/books', (req, res) => {
     res.send('GET ALL BOOKS')
  })
 
- app.post('/books', (req, res) => {
-    res.send('Book CREATED')
- })
+ app.post('/books', createBooks);
 
- app.put('/books', (req, res) => {
-    res.send('Book UPDATED')
- })
+ app.put('/books/:id', updateBookById);
 
- app.delete('/books', (req, res) => {
-    res.send('Book DELETED')
- })
+ app.delete('/books/:id', deleteBookById);
 
-app.listen(PORT, () => {
-    console.log('Server is running.');
-})
