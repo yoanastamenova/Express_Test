@@ -1,6 +1,7 @@
 import express from 'express';
 import { createAuthor, deleteAuthorById, updateAuthorById } from '../controllers/auto.controller';
 import { createBooks, deleteBookById, updateBookById } from '../controllers/books.controller';
+import { createUser, deleteUserById, updateUserById } from '../controllers/users.controller';
 
 const app = express();
 
@@ -40,3 +41,14 @@ app.get('/books', (req, res) => {
 
  app.delete('/books/:id', deleteBookById);
 
+ //USERS
+
+ app.get('/users', (req, res) => {
+    res.send('GET ALL USERS')
+ })
+
+ app.post('/users', createUser);
+
+ app.put('/users/:id', updateUserById);
+
+ app.delete('/users/:id', deleteUserById);
