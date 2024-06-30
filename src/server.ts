@@ -71,6 +71,43 @@ app.get('/users/:id', )
 // LOANS entitiy included
 
 app.get('/loans', (req, res) => {
-    res.send('Loans details')
+    res.send('Loans list')
 })
 
+app.get('/loans/:id', (req, res) => {
+    res.send(`Loans of ${req.body.id}`)
+})
+
+app.get('/loans/users/current', (req, res) => {
+    res.send(`Loans of ${req.body.user}`)
+})
+
+app.get('/loans/users/:userId', (req, res) => {
+    res.send(`Loans details of ${req.body.user}`)
+})
+
+app.post('/loans', (req, res) => {
+    res.send(`New Loan`)
+})
+
+app.put('/loans/users/id', (req, res) => {
+    res.send('Loan update')
+})
+
+app.delete('/loans/users/id', (req, res) => {
+    res.send('Loans deleted')
+})
+
+app.put('/loans/users/return/id', (req, res) => {
+    res.send('Loans returned')
+})
+
+// AUTHENTICATION entitiy added
+
+app.post('/auth/register', (req,res) => {
+   res.send('Register new user')
+})
+
+app.post('/auth/login', (req,res) => {
+    res.send('Log in')
+ })
