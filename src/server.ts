@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import { createAuthor, deleteAuthorById, updateAuthorById } from '../controllers/auto.controller';
 import { createBooks, deleteBookById, updateBookById } from '../controllers/books.controller';
@@ -27,36 +28,49 @@ app.listen(PORT, () => {
 })
 
 
-//AUTHORS
+//AUTHORS entitiy included
 
 app.post('/authors', createAuthor)
 
-//rutas dianmicas usamos req params
 app.put('/authors/:id', updateAuthorById);
 
-//DELETE
 app.delete('/authors/:id', deleteAuthorById);
 
-//BOOKS
+//BOOKS entitiy included
 
 app.get('/books', (req, res) => {
     res.send('GET ALL BOOKS')
 })
 
-app.post('/books', createBooks);
+app.post('/books', createBooks); 
 
 app.put('/books/:id', updateBookById);
 
 app.delete('/books/:id', deleteBookById);
 
-//USERS
+//USERS entitiy included
 
-app.get('/users', (req, res) => {
-    res.send('GET ALL USERS')
+app.get('/users', (req, res) => {      //show all users
+    res.send(req.body)
+})
+
+app.put('/users/:id', updateUserById);
+
+app.get('/users', (req, res) => {      //show all users
+    res.send('Detalles del perfil')
 })
 
 app.post('/users', createUser);
 
-app.put('/users/:id', updateUserById);
-
 app.delete('/users/:id', deleteUserById);
+
+app.post('/users', );
+
+app.get('/users/:id', )
+
+// LOANS entitiy included
+
+app.get('/loans', (req, res) => {
+    res.send('Loans details')
+})
+
