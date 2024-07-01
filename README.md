@@ -18,4 +18,4 @@
  16. create folder DATABASE > db.ts > import import "reflect-metadata"
 import { DataSource } from "typeorm"
 17. server.ts > import the const 
-18. changes in env
+18. changes in env added the needed connections variables needed in env.exmaple
