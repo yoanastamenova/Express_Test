@@ -29,14 +29,6 @@ app.listen(PORT, () => {
     console.log('Server is running.');
 })
 
-AppDataSource.initialize()
-.then(() => {
-console.log('Database connected');
-})
-.catch(error => {
-console.log(error)
-})
-
 
 //AUTHORS entitiy included
 
@@ -57,6 +49,14 @@ app.post('/books', createBooks);
 app.put('/books/:id', updateBookById);
 
 app.delete('/books/:id', deleteBookById);
+
+AppDataSource.initialize()
+.then(() => {
+console.log('Database connected');
+})
+.catch(error => {
+console.log(error)
+})
 
 //USERS entitiy included
 
