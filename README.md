@@ -8,4 +8,9 @@
  6. npm tsc (to compile all files from TS to JS) 
  7. npm i nodemon -D (to watch the TS file and compile automaticly)
  8. npm i ts-node -D (refreshes the TS if not working)
- 
+ 9. npm i dotenv (file for variables which will be hidden)
+ 10. npm i typeorm (installing typeorm for TS)
+ 11. npm install reflect-metadata
+ 12. npm install @types/node --save-dev
+ 13. npm install mysql2
+ 14. uncomment    "experimentalDecorators": AND  "emitDecoratorMetadata": true
