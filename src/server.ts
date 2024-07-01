@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
-import { createAuthor, deleteAuthorById, updateAuthorById } from '../controllers/auto.controller';
-import { createBooks, deleteBookById, updateBookById } from '../controllers/books.controller';
-import { createUser, deleteUserById, updateUserById } from '../controllers/users.controller';
+import { createAuthor, deleteAuthorById, updateAuthorById } from './controllers/auto.controller';
+import { createBooks, deleteBookById, updateBookById } from './controllers/books.controller';
+import { createUser, deleteUserById, updateUserById } from './controllers/users.controller';
+import { AppDataSource } from './database/db';
+
 
 const app = express();
 
@@ -25,6 +27,14 @@ app.get('/healthy', (req, res) => {
 
 app.listen(PORT, () => {
     console.log('Server is running.');
+})
+
+AppDataSource.initialize()
+.then(() => {
+console.log('Database connected');
+})
+.catch(error => {
+console.log(error)
 })
 
 

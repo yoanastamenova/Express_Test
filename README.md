@@ -14,3 +14,8 @@
  12. npm install @types/node --save-dev
  13. npm install mysql2
  14. uncomment    "experimentalDecorators": AND  "emitDecoratorMetadata": true
+ 15. create in SQL new schema > name "library_online"
+ 16. create folder DATABASE > db.ts > import import "reflect-metadata"
+import { DataSource } from "typeorm"
+17. server.ts > import the const 
+18. changes in env
