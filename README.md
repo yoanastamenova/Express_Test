@@ -19,3 +19,7 @@
 import { DataSource } from "typeorm"
 17. server.ts > import the const 
 18. changes in env added the needed connections variables needed in env.exmaple
+19. npx typeorm migration:create ./src/database/migrations/user    (create the migration from SQL Workbench to our VScode folder Database)
+20. add migration dependancy in db.ts (insert migrations: [Author1719825232288, User1719825005301],)
+21. npx typeorm-ts-node-commonjs migration:run -d ./src/database/db.ts (execute to do migrations of all db.ts files that need to be migrated)
+22. added scripts "migrations" , "revert.migrations" to execute directly as npm run migrations
