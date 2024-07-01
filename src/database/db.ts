@@ -4,6 +4,7 @@ import { DataSource } from "typeorm";
 
 import { Author1719825232288 } from "./migrations/1719825232288-author";
 import { User1719825005301 } from "./migrations/1719825005301-user";
+import { Book1719832589220 } from "./migrations/1719832589220-book";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -13,7 +14,7 @@ export const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     entities: [],
-    migrations: [Author1719825232288, User1719825005301],
+    migrations: [`${__dirname}/migrations/**/*{.ts,.js}`],
     synchronize: false,
     logging: false,
 })
