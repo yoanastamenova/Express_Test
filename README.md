@@ -109,7 +109,7 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 
    }
 
-33. add the needed columns and entities into the file
+33. add the needed columns and entities into the file above
 
 34. add entities in db such as entities: [`${__dirname}/models/**/*{.ts,.js}`]
 

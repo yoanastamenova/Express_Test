@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
+import { User } from "../database/models/User";
 
 export const createUser =  (req: Request, res: Response) => {
-    console.log(req.body);
-    console.log(req.body.name);
-    console.log(req.body.email);
-    console.log(req.body.password);
+    User.find
  
     res.json({
         success: true,
