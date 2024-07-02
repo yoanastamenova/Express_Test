@@ -115,13 +115,16 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 
 35. to the controller of the specified table we need to follow some steps for the different CRUD types:
 
+
      for CREATE:
-    a) obtain the information from the DB
-    b) validate it
-    c) filtrate it if needed
-    d) save it 
-    e) provide a response
+    1.1 obtain the information from the DB
+    1.2 validate it
+    1.3 filtrate it if needed
+    1.4 save it 
+    1.5 provide a response
+
+
 
     for GET:
-    a) obtain the information from the DB
-    b) return the information
+    1.1 obtain the information from the DB
+    1.2 return the information
