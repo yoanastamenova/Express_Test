@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
-@Entity()
+@Entity("authors")    // include the name of the table which was migrated inside entitiy
 export class Author extends BaseEntity{
     @PrimaryGeneratedColumn()
     id!: Number

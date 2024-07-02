@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import { createAuthor, deleteAuthorById, updateAuthorById } from './controllers/auto.controller';
+import { createAuthor, deleteAuthorById, getAllAuthors, updateAuthorById } from './controllers/auto.controller';
 import { createBooks, deleteBookById, updateBookById } from './controllers/books.controller';
 import { createUser, deleteUserById, updateUserById } from './controllers/users.controller';
 import { AppDataSource } from './database/db';
@@ -31,6 +31,8 @@ app.listen(PORT, () => {
 
 
 //AUTHORS entitiy included
+
+app.get('/authors', getAllAuthors)
 
 app.post('/authors', createAuthor)
 

@@ -113,4 +113,15 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 
 34. add entities in db such as entities: [`${__dirname}/models/**/*{.ts,.js}`]
 
-35. to the controller of the specified table we need to add 
+35. to the controller of the specified table we need to follow some steps for the different CRUD types:
+
+     for CREATE:
+    a) obtain the information from the DB
+    b) validate it
+    c) filtrate it if needed
+    d) save it 
+    e) provide a response
+
+    for GET:
+    a) obtain the information from the DB
+    b) return the information

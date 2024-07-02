@@ -56,8 +56,31 @@ export const createAuthor = async (req: Request, res: Response) => {
   }
 }
 
+export const getAllAuthors = async (req: Request, res: Response) => {
+    try {
+    //1. Recuperar info de BD
+     const authors = await Author.find()
 
-export const updateAuthorById = (req: Request, res: Response) => {
+     //2. Responder la info 
+     res.json(
+        {
+            success: true,
+            message: "All authors retrived successfully",
+            data: authors
+        }
+     ) 
+     
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "Cannot retrive authors",
+                error: error
+            }
+        )
+    }
+}
+export const updateAuthorById = async (req: Request, res: Response) => {
     console.log(req.params.id);
 
     res.json({
@@ -66,7 +89,7 @@ export const updateAuthorById = (req: Request, res: Response) => {
     })
 }
 
-export const deleteAuthorById = (req: Request, res: Response) => {
+export const deleteAuthorById = async (req: Request, res: Response) => {
     res.json({
         success: true,
         message: `AUTHOR DELETED With id: ${req.params.id}`
