@@ -1,34 +1,37 @@
 # Steps to follow
 
-1.  git init (creates our git repo)
+## CREATE THE SERVER
+1. ``` git init ``` (creates our git repo)
 
-2.  npm init (creates node_modules)
+2.  ``` npm init ``` (creates node_modules)
 
-3.  npm i express (creating framework environment)
+3.  ``` npm i express ``` (creating framework environment)
 
-4.  npm i typescript -d (install typescript with DEV dependancy)
+4.  ``` npm i typescript -d ``` (install typescript with DEV dependancy)
 
-5.  npm i --save-dev @types/express @types-node -D (install types)
+5.  ``` npm i --save-dev @types/express @types-node -D ``` (install types)
 
-6.  npx tsc --init
+6.  ``` npx tsc --init ```
 
 7.  create folder SRC and inside create tsc file and modify outDir in tscconfig to be ./dist
 
 8.  add into package.json
 
+    ```
     scripts:
     "start": "node ./dist/server.js",
     "dev": "nodemon ./src/server.ts",
     "build": "tsc"
+    ```
 
-9.  npm tsc (to compile all files from TS to JS)
+9.  ``` npm tsc ``` (to compile all files from TS to JS)
 
-10. npm i nodemon -D (to watch the TS file and compile automaticly)
+10. ``` npm i nodemon -D ``` (to watch the TS file and compile automaticly)
 
-11. npm i ts-node -D (refreshes the TS if not working)
+11.  ``` npm i ts-node -D ``` (refreshes the TS if not working)
 
 12. check the package.json to see if all the dependancies are installed
-
+```
 ("devDependencies":
 { "@types/express": "^4.17.17",
 "@types/node": "^16.11.10",
@@ -38,26 +41,28 @@
 "dependencies": {
 "express": "^4.18.2",
 },)
+```
+From here we can use NPM RUN DEV to start our server with the command:
 
-From here we can use NPM RUN DEV to start our server with npm run dev :)
+``` npm run dev ```  :) 
 
-13. npm i dotenv (file for variables which will be hidden)
+13. ``` npm i dotenv ``` (file for variables which will be hidden)
 
-14. import 'dotenv/config' in server.ts and db.ts
+14. ``` import 'dotenv/config' ``` in server.ts and db.ts
 
 15. Create the .env file in the root directory of your project and add the necessary environment variables. (include the variables) also add .env to .gitignore
 
------ FROM HERE WE START OUR DB AND CONNECT IT -------
+## CREATE DATABASE AND CONNECT IT
 
-16. npm i typeorm (installing typeorm for TS)
+16. ``` npm i typeorm ``` (installing typeorm for TS)
 
-17. npm install reflect-metadata
+17. ``` npm install reflect-metadata ``` (install metadata package)
 
-18. npm install @types/node --save-dev
+18. ``` npm install @types/node --save-dev ``` (install types)
 
-19. npm install mysql2 --save
+19. ``` npm install mysql2 --save ``` (install mysql package)
 
-20. uncomment "experimentalDecorators": "emitDecoratorMetadata":
+20. uncomment "experimentalDecorators": "emitDecoratorMetadata": in our tsconfig file
 
 21. Create new folder into SRC with name DATABASE AND new file inside db.ts and include the following:
 
@@ -68,33 +73,37 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 23. go to file server.ts > import { AppDataSource } from './database/db';
 
 24. In the same file server.ts import:
-
-          AppDataSource.initialize() .then(() =>
+        
+         AppDataSource.initialize() .then(() =>
           { console.log('Database connected'); })
-          .catch(error => { console.log(error) })
+          .catch(error => { console.log(error) }) 
 
 25. changes in env added the needed connections variables needed in env.exmaple
 
-------- MIGRATIONS MAKING ----------
+## MIGRATIONS MAKING 
 
-26. npx typeorm migration:create ./src/database/migrations/user
+26. ```npx typeorm migration:create ./src/database/migrations/user ```
     (create the migration from SQL Workbench to our VScode folder Database)
 
-27. add migration dependancy in db.ts (insert migrations: [Author1719825232288, User1719825005301],)
+27. ``` add migration dependancy in db.ts (insert migrations: [Author1719825232288, User1719825005301],) ```
 
-28. npx typeorm-ts-node-commonjs migration:run -d ./src/database/db.ts (execute to do migrations of all db.ts files that need to be migrated)
+28. ```npx typeorm-ts-node-commonjs migration:run -d ./src/database/db.ts ``` (execute to do migrations of all db.ts files that need to be migrated)
 
-29. added scripts "migrations" , "revert.migrations" to execute directly as npm run migrations
+29. added scripts 
+    "migrations" , 
+    "revert.migrations"
 
--------- MODELS MAKING -----------
+to execute directly as npm run migrations
+
+## MODELS MAKING
 
 30. create folder models into folder database
 
-31. npx typeorm entity:create ./src/database/models/Author
+31. ```npx typeorm entity:create ./src/database/models/Author ```
 
 32. insert into new created file:
-
-    import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+   ```
+   import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
    @Entity()
    export class Author extends BaseEntity{
@@ -106,8 +115,7 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 
     @Column({name: 'nationality'})
     nationality!: string
-
-   }
+   ```
 
 33. add the needed columns and entities into the file above
 
@@ -116,7 +124,8 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 35. to the controller of the specified table we need to follow some steps for the different CRUD types:
 
 
-     for CREATE:
+
+     #### for CREATE:
     1.1 obtain the information from the DB
     1.2 validate it
     1.3 filtrate it if needed
@@ -125,17 +134,17 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
 
 
 
-    for GET:
+    #### for GET:
     1.1 obtain the information from the DB
     1.2 return the information
 
 
-    for DELETE:
+    #### for DELETE:
     1.1 obtain the id of the element we want to delete
     1.2 delete the element from the DB
     1.3 return a reponse
 
-    for UPDATE:
+    #### for UPDATE:
     1.1 obtain the information
     1.2 validate (if needed)
     1.3 filtrate (id needed)
