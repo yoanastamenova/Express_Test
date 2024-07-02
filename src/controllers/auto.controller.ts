@@ -81,12 +81,43 @@ export const getAllAuthors = async (req: Request, res: Response) => {
     }
 }
 export const updateAuthorById = async (req: Request, res: Response) => {
-    console.log(req.params.id);
+    try {
+        // 1. Recupera la info
+        const authorIdToUpdate = req.params.id
+        const body = req.body
 
-    res.json({
-        success: true,
-        message: `AUTHOR UPDATED with id ${req.params.id}`
-    })
+        //2. Validar la info
+
+        // (recuerda del ejemplo de la contrasena que no puedes usar la misma)
+
+        //3. Tratar la info si hace falta
+
+        //4. Guardar la info en la BD
+       const authorUpdated = await Author.update(
+            {
+                id: parseInt(authorIdToUpdate)
+            },
+            body
+        )
+
+        //5. Devolver respuesta
+        res.status(200).json(
+            {
+                success: true,
+                message: "Author updated",
+                data: authorUpdated
+            }
+        )
+
+    } catch(error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "Author cannot be updated",
+                error: error
+            }
+        )
+    }
 }
 
 export const deleteAuthorById = async (req: Request, res: Response) => {

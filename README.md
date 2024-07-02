@@ -128,3 +128,16 @@ From here we can use NPM RUN DEV to start our server with npm run dev :)
     for GET:
     1.1 obtain the information from the DB
     1.2 return the information
+
+
+    for DELETE:
+    1.1 obtain the id of the element we want to delete
+    1.2 delete the element from the DB
+    1.3 return a reponse
+
+    for UPDATE:
+    1.1 obtain the information
+    1.2 validate (if needed)
+    1.3 filtrate (id needed)
+    1.4 save it in the DB
+    1.5 provide a reponse
