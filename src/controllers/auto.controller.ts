@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Author } from "../database/models/Author";
 
 export const createAuthor = async (req: Request, res: Response) => {
+    try {
     //1. Recuperar la informacion de la req
     const name = req.body.name;
     const nationality = req.body.nationality;
@@ -44,6 +45,15 @@ export const createAuthor = async (req: Request, res: Response) => {
             data: newAuthor
         }
     )
+}
+  catch(error) {
+    res.status(500).json(
+        {
+            success: false,
+            message: "Error creating author"
+        }
+    )
+  }
 }
 
 
