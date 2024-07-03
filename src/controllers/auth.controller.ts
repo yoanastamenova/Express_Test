@@ -116,20 +116,6 @@ export const login = async (req: Request, res: Response) => {
             )
         }
 
-        //5. Devolver respuesta
-        if (password == password) {
-            res.status(200).json({
-                success: true,
-                message: "You are logged in!"
-            }
-            )
-        } else if (password == !password) {
-            res.status(400).json({
-                success: false,
-                message: "Wrong password"
-            })
-        }
-
     } catch (error) {
         res.status(500).json({
             success: false,

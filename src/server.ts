@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
-import { createAuthor, deleteAuthorById, updateAuthorById } from './controllers/auto.controller';
-import { createBooks, deleteBookById, updateBookById } from './controllers/books.controller';
-import { createUser, deleteUserById, updateUserById } from './controllers/users.controller';
+import { createAuthor, deleteAuthorById, getAllAuthors, updateAuthorById } from './controllers/auto.controller';
+import { createBooks, getAllBooks } from './controllers/books.controller';
+import { createUser, deleteUserById, getAllUsers, updateUserById } from './controllers/users.controller';
 import { AppDataSource } from './database/db';
 
 
@@ -40,15 +40,9 @@ app.delete('/authors/:id', deleteAuthorById);
 
 //BOOKS entitiy included
 
-app.get('/books', (req, res) => {
-    res.send('GET ALL BOOKS')
-})
+app.get('/books', getAllBooks)
 
-app.post('/books', createBooks); 
-
-app.put('/books/:id', updateBookById);
-
-app.delete('/books/:id', deleteBookById);
+app.post('/books', createBooks)
 
 AppDataSource.initialize()
 .then(() => {
@@ -66,9 +60,7 @@ app.get('/users', (req, res) => {      //show all users
 
 app.put('/users/:id', updateUserById);
 
-app.get('/users', (req, res) => {      //show all users
-    res.send('Detalles del perfil')
-})
+app.get('/users', getAllUsers);
 
 app.post('/users', createUser);
 
@@ -115,9 +107,9 @@ app.put('/loans/users/return/id', (req, res) => {
 // AUTHENTICATION entitiy added
 
 app.post('/auth/register', (req,res) => {
-   res.send('Register new user')
-})
-
-app.post('/auth/login', (req,res) => {
-    res.send('Log in')
+    res.send('Register new user')
  })
+ 
+ app.post('/auth/login', (req,res) => {
+     res.send('Log in')
+  })
