@@ -1,4 +1,16 @@
-# Steps to follow
+# Steps to follow when working with EXPRESS JS
+Check out the table below to search and follow the wanted point of the document faster. 
+
+<details>
+  <summary>Table of contents 📝</summary>
+  <ol>
+    <li><a href="#create-the-server">Server creation</a></li>
+    <li><a href="#create-database-and-connect-it">Database creation</a></li>
+    <li><a href="#migrations-making">Migrations</a></li>
+    <li><a href="#models-making">Models</a></li>
+    <li><a href="#controllers-making">Controllers & CRUD insertation</a></li>
+  </ol>
+</details>
 
 ## CREATE THE SERVER
 1. ``` git init ``` (creates our git repo)
