@@ -137,7 +137,7 @@ to execute directly as npm run migrations
     4. Continue to fill in the controller with all the needed CRUD methods such as:
 
 
-     #### for CREATE:
+    for CREATE:
     1.1 obtain the information from the DB
     1.2 validate it
     1.3 filtrate it if needed
@@ -146,17 +146,17 @@ to execute directly as npm run migrations
 
 
 
-    #### for GET:
+    for GET:
     1.1 obtain the information from the DB
     1.2 return the information
 
 
-    #### for DELETE:
+    for DELETE:
     1.1 obtain the id of the element we want to delete
     1.2 delete the element from the DB
     1.3 return a reponse
 
-    #### for UPDATE:
+    for UPDATE:
     1.1 obtain the information
     1.2 validate (if needed)
     1.3 filtrate (id needed)
