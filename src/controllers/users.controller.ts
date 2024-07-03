@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import bcrypt from 'bcrypt';
 import { User } from "../database/models/User";
 
 export const createUser =  (req: Request, res: Response) => {
