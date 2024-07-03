@@ -121,8 +121,18 @@ to execute directly as npm run migrations
 
 34. add entities in db such as entities: [`${__dirname}/models/**/*{.ts,.js}`]
 
-35. to the controller of the specified table we need to follow some steps for the different CRUD types:
+### To create any CRUD type we need to follow different steps:
 
+   1. Make sure we have the neccessary model created (ex. User model for users.controller.ts)
+
+   2. Create new file in folder SRC > Controllers > X.controller.ts (ex. X is the name of the table we need)
+   
+   3. In the controller file we need to import: 
+        a) import { model } from "../database/models/modelName";
+        b) import {Request, Response } from 'express'
+        c) import bycript from 'bycript'  --- ONLY IF WE USED THE FRAMEWORK
+
+    4. Continue to fill in the controller with all the needed CRUD methods such as:
 
 
      #### for CREATE:
