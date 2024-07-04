@@ -135,7 +135,7 @@ to execute directly as npm run migrations
     4. Continue to fill in the controller with all the needed CRUD methods such as:
 
 
-     #### for CREATE:
+     for CREATE:
     1.1 obtain the information from the DB
     1.2 validate it
     1.3 filtrate it if needed
@@ -144,19 +144,76 @@ to execute directly as npm run migrations
 
 
 
-    #### for GET:
+     for GET:
     1.1 obtain the information from the DB
     1.2 return the information
 
 
-    #### for DELETE:
+     for DELETE:
     1.1 obtain the id of the element we want to delete
     1.2 delete the element from the DB
     1.3 return a reponse
 
-    #### for UPDATE:
+     for UPDATE:
     1.1 obtain the information
     1.2 validate (if needed)
     1.3 filtrate (id needed)
     1.4 save it in the DB
     1.5 provide a reponse
+
+## MIDDLEWARE MAKING
+  35. In folder SRC create new folder: Middleware
+  
+  36. Create file X.ts and fill inside:
+  
+  ```import {Request, Response , Next: NextFunction} from 'express' ``` 
+
+37. When done with the function import it in your server.ts after your endpoint and before the other func that you want to authenticate (ex. app.delete('users/delete', auth,(middleware) deleteUser))
+
+38. Try the endpoint in ThunderClient as a NewRequest
+
+## TYPES MAKING
+
+39. In folder SRC create new folder: Types
+40. Create X.d.ts (type file which has interface(this interface represents an object and its params))
+41. Import the interface wherever you need it (ex. TokenDecoded{} from types imported into middleware auth.ts)
+
+## IMPORT Bcrypt
+42. ``` npm install bcrypt ``` install node package
+43. ``` npm i --save-dev @types/bcrypt``` install type deps
+44. ``` import bcrypt from 'bcrypt' ```into file
+45. Use predifined methods such as bcrypt.hashSync (password, 10) 
+To encrypt user passwords into hash code
+
+## IMPORT jsonwebtoken
+46. ``` npm install jsonwebtoken ``` install node package
+46. ``` npm i --save-dev @types/jsonwebtoken ``` install type deps
+46. ``` import jwt from 'jsonwebtoken' ``` into file
+47. Generate token (import code in file): 
+```
+ const token = jwt.sign(
+      {
+        id: user.id,
+        role: user.role,
+        email: user.email
+      },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: "2h"
+      }
+    )
+
+    res.status(200).json(
+      {
+        success: true,
+        message: "User logged",
+        token: token
+      }
+    )
+```
+
+48. Import JWT_SECRET = ... in .env and .env.example files as well in auth.ts file and login const where it needs to be authenticated
+
+49. Check if the endpoint is working by passing the hash code into Auth Bearer space 
+
+50. Include auth(middleware) with the new token option in server.ts
