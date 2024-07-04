@@ -122,12 +122,11 @@ export const login = async (req: Request, res: Response) => {
           },
           'secreto',
           {
-
-             
+            expiresIn: "2h"
           }
         )
 
-        return res.status(200).json(
+        res.status(200).json(
           {
               success: true,
               message: "Logged in successfully!"
