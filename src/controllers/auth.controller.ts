@@ -1,6 +1,7 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 import { Request, Response } from "express";
 import { User } from "../database/models/User";
+import jwt from 'jsonwebtoken';
 
 export const register = async (req: Request, res: Response) => {
     try {
@@ -107,28 +108,32 @@ export const login = async (req: Request, res: Response) => {
                 message: "Email or password incorrect"
             }
            )
-        } else {
-            return res.status(200).json(
-                {
-                    success: true,
-                    message: "Logged in successfully!"
-                }
-            )
-        }
+        } 
+        
 
-        //5. Devolver respuesta
-        if (password == password) {
-            res.status(200).json({
-                success: true,
-                message: "You are logged in!"
-            }
-            )
-        } else if (password == !password) {
-            res.status(400).json({
-                success: false,
-                message: "Wrong password"
-            })
-        }
+        //5. Create token
+
+        const token = jwt.sign(
+          {
+            id: user.id,
+            role: user.role,
+            email: user.email,
+            message: "Email or password are not valid"
+          },
+          'secreto',
+          {
+
+             
+          }
+        )
+
+        return res.status(200).json(
+          {
+              success: true,
+              message: "Logged in successfully!"
+          }
+      )
+        
 
     } catch (error) {
         res.status(500).json({
