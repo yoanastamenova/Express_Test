@@ -6,6 +6,7 @@ import { createUser, deleteUserById, updateUserById, getAllUsers, getUserProfile
 import { AppDataSource } from './database/db';
 import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
+import { isAdmin } from './middlewares/isAdmin';
 
 
 const app = express();
@@ -42,7 +43,7 @@ app.delete('/books', )
 
 // USER
 
-app.get('/user', getAllUsers);
+app.get('/user', auth, isAdmin, getAllUsers);
 app.get('/users/profile', auth, getUserProfile);
 
 // AUTH
