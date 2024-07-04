@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 @Entity('users')
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number
+  id!: Number
 
   @Column({name: 'name'})
   name!: string

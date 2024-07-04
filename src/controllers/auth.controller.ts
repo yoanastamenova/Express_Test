@@ -108,31 +108,28 @@ export const login = async (req: Request, res: Response) => {
                 message: "Email or password incorrect"
             }
            )
-        } 
-        
+        } else {
+            return res.status(200).json(
+                {
+                    success: true,
+                    message: "Logged in successfully!"
+                }
+            )
+        }
 
-        //5. Create token
-
-        const token = jwt.sign(
-          {
-            id: user.id,
-            role: user.role,
-            email: user.email,
-            message: "Email or password are not valid"
-          },
-          process.env.JWT_SECRET as string,
-          {
-            expiresIn: "2h"
-          }
-        )
-
-        res.status(200).json(
-          {
-              success: true,
-              message: "Logged in successfully!"
-          }
-      )
-        
+        //5. Devolver respuesta
+        if (password == password) {
+            res.status(200).json({
+                success: true,
+                message: "You are logged in!"
+            }
+            )
+        } else if (password == !password) {
+            res.status(400).json({
+                success: false,
+                message: "Wrong password"
+            })
+        }
 
     } catch (error) {
         res.status(500).json({
