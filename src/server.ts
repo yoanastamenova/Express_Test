@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { createAuthor, deleteAuthorById, getAllAuthors, updateAuthorById } from './controllers/auto.controller';
 import { createBooks, getAllBooks } from './controllers/books.controller';
-import { createUser, deleteUserById, updateUserById, getAllUsers } from './controllers/users.controller';
+import { createUser, deleteUserById, updateUserById, getAllUsers, getUserProfile } from './controllers/users.controller';
 import { AppDataSource } from './database/db';
 import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
@@ -36,16 +36,14 @@ app.get('/authors', auth, getAllAuthors)
 
 // BOOKS
 app.get('/books', )
-app.post('/books', createBooks)
+app.post('/books', auth, createBooks)
 app.put('/books', )
 app.delete('/books', )
 
 // USER
 
 app.get('/user', getAllUsers);
-app.post('')
-app.put('/user/:id')
-app.delete('/user/:id')
+app.get('/users/profile', auth, getUserProfile);
 
 // AUTH
 app.post('/register', register)

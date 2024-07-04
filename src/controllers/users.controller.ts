@@ -61,3 +61,39 @@ export const getAllUsers = async (req: Request, res: Response) => {
         )
     }
 }
+
+export const getUserProfile = async (req: Request, res: Response) => {
+    try {
+        //1. Get info
+        const userId = req.tokenData.id;
+
+
+        //2. Find the user responding ot the token
+
+        const user = await User.findOne(
+            {
+                where: { id: userId}
+            }
+        )
+
+
+        //3. Return response
+
+        res.json(
+            {
+                success:true,
+                message: "User profile retrived",
+                data: user
+            }
+        )
+        
+    } catch(error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "Error retriving profile",
+                error: error
+            }
+        )
+    }
+}
