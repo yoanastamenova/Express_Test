@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+import { TokenDecoded } from "./types/index";
 
 export const auth = (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -12,8 +13,15 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
             )
         }
 
+        
         const token = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as TokenDecoded;
+
+        req.tokenData = {
+            id: decoded.id,
+            role: decoded.role,
+            email: decoded.email
+        }
         
 
         next();
