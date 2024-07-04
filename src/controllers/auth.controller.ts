@@ -120,7 +120,7 @@ export const login = async (req: Request, res: Response) => {
             email: user.email,
             message: "Email or password are not valid"
           },
-          'secreto',
+          process.env.JWT_SECRET as string,
           {
             expiresIn: "2h"
           }
