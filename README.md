@@ -1,5 +1,20 @@
 # Steps to follow
 
+<details>
+  <summary>Table of contents 📝</summary>
+  <ol>
+    <li><a href="#create-the-server">Create Server</a></li>
+    <li><a href="#create-database-and-connect-it">Create Database</a></li>
+    <li><a href="#migrations-making">Create Migrations</a></li>
+    <li><a href="#models-making">Create Models</a></li>
+    <li><a href="#to-create-any-crud-type-we-need-to-follow-different-steps">Implement CRUD step by step</a></li>
+    <li><a href="#middleware-making">Create Middlewares</a></li>
+    <li><a href="#types-making">Create Types</a></li>
+    <li><a href="#import-bcrypt">Import bcrypt</a></li>
+    <li><a href="#import-jsonwebtoken">Import jsonwebtoken</a></li>
+  </ol>
+</details>
+
 ## CREATE THE SERVER
 1. ``` git init ``` (creates our git repo)
 
