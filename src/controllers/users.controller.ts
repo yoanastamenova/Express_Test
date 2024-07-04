@@ -25,4 +25,4 @@ export const deleteUserById = (req: Request, res: Response) => {
         success: true,
         message: `USER DELETED With id: ${req.params.id}`
     })
-}
+} 
