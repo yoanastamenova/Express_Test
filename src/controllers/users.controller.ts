@@ -97,3 +97,38 @@ export const getUserProfile = async (req: Request, res: Response) => {
         )
     }
 }
+
+export const getUserFavouritesBooks = async (req: Request, res: Response) => {
+    try {
+        //1. Get info for the wanted user
+        const userID = req.tokenData.id
+
+        //2. Buscar el usuario
+       const userFavBooks = await User.findOne(
+            {
+                where: {
+                    id: userID
+                }
+            }
+        )
+        //3. Respuesta
+        res.status(200).json(
+            {
+                where: {
+                    id: userID
+                },
+                relations: {
+                    favourite_books: true
+                }
+            }
+        )
+        
+    } catch (error) {
+        res.status(500).json({
+            success:false,
+            message: "Cannot get favourite books of user",
+            error: error
+        })
+        
+    }
+}
