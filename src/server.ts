@@ -7,6 +7,7 @@ import { AppDataSource } from './database/db';
 import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
 import { isAdmin } from './middlewares/isAdmin';
+import { addFavouriteBook, deleteFavourite } from './controllers/favourites.controller';
 
 
 const app = express();
@@ -46,6 +47,11 @@ app.delete('/books', )
 app.get('/user', auth, isAdmin, getAllUsers);
 app.get('/users/myprofile', auth, getUserProfile);
 app.get('/users/favourites', auth, getUserFavouritesBooks)
+app.post('/users/addFavourite', auth, addFavouriteBook)
+
+//FAVOURITES 
+
+app.delete('/favourites/delete/:id', auth, deleteFavourite)
 
 // AUTH
 app.post('/register', register)

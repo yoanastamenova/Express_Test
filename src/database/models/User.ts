@@ -4,7 +4,7 @@ import { Favourite } from "./Favourite"
 @Entity('users')
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: Number
+  id!: number
 
   @Column({name: 'name'})
   name!: string

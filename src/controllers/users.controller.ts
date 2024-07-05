@@ -105,21 +105,20 @@ export const getUserFavouritesBooks = async (req: Request, res: Response) => {
 
         //2. Buscar el usuario
        const userFavBooks = await User.findOne(
-            {
-                where: {
-                    id: userID
-                }
+        {
+            select: {
+                id: true,
+                email: true
+            },
+            where:{
+                id: userID
             }
-        )
+        }
+       )
         //3. Respuesta
         res.status(200).json(
             {
-                where: {
-                    id: userID
-                },
-                relations: {
-                    favourite_books: true
-                }
+              
             }
         )
         
