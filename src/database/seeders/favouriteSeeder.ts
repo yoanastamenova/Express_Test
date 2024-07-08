@@ -4,6 +4,8 @@ export const favouriteSeeder = async () => {
     try {
         await AppDataSource.initialize();
 
+        const favourite = [];
+
         
     } catch (error: any) {
         const message = error instanceof Error ? error.message : String(error);

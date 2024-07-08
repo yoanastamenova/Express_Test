@@ -52,9 +52,7 @@ export const authorSeeder = async () => {
 const createAuthors = async (authors: any) => {  
   const newAUthors: Author[] = []
 
-  authors.forEach((element: any, index: any) => {
-    console.log(index);
-    
+  authors.forEach((element: any, index: any) => {    
     const author = new Author();
     author.id = index + 1;
     author.name = element.name;
