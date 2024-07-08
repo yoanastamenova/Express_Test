@@ -57,16 +57,19 @@ export const createAuthor = async (req: Request, res: Response) => {
 export const getAllAuthors = async(req: Request, res: Response) => {
   try {
     // 1. Recuperar la info de la BD
-    const page = Number(req.query.page || 1)   
-    let limit = Number(req.query.limit || "5")  
+    let limit = Number(req.query.limit) > 100 ? 50 : Number(req.query.limit)          //the limit serves for indicating the number of registers that will be shown
+    const page = Number(req.query.page || 1)               // the page serves for indicating the actual page we are on and if not we go to the first one
     
     if(limit > 100){
       limit = 50;
-    }                                                     //create pages in form of number         //taking the limit
+    }     
+    
+
     const authors = await Author.find({
-      skip: (page-1)*limit,                                  //which page are we on rn
+      skip: (page-1)*limit,                                  //indicate 
       take: limit
   })
+
     // 2. Responder la info de la bd
     res.json(
       {

@@ -34,7 +34,7 @@ app.post('/authors', auth, createAuthor)
 // rutas dinamincas usamos req params
 app.put('/authors/:id', updateAuthorById)
 app.delete('/authors/:id', deleteAuthorById)
-app.get('/authors', auth, getAllAuthors)
+app.get('/authors', getAllAuthors)
 
 // BOOKS
 app.get('/books', )
