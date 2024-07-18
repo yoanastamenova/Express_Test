@@ -8,9 +8,16 @@ import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
 import { isAdmin } from './middlewares/isAdmin';
 import { addFavouriteBook, deleteFavourite } from './controllers/favourites.controller';
+import cors from 'cors';
 
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173',  // request origin URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // allowed methods in the request
+  credentials: true // allows session cookies from browser to pass through
+}));
 
 //middleware
 
