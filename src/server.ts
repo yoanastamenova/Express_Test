@@ -44,7 +44,7 @@ app.delete('/authors/:id', deleteAuthorById)
 app.get('/authors', getAllAuthors)
 
 // BOOKS
-app.get('/books', )
+app.get('/books', getAllBooks)
 app.post('/books', auth, createBooks)
 app.put('/books', )
 app.delete('/books', )
