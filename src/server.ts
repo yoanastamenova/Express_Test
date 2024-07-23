@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { createAuthor, deleteAuthorById, getAllAuthors, updateAuthorById } from './controllers/auto.controller';
 import { createBooks, getAllBooks } from './controllers/books.controller';
-import { createUser, deleteUserById, updateUserById, getAllUsers, getUserProfile, getUserFavouritesBooks } from './controllers/users.controller';
+import { getAllUsers, getUserProfile, getUserFavouritesBooks } from './controllers/users.controller';
 import { AppDataSource } from './database/db';
 import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
@@ -13,11 +13,7 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5173',  // request origin URL
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // allowed methods in the request
-  credentials: true // allows session cookies from browser to pass through
-}));
+app.use(cors());
 
 //middleware
 
@@ -44,7 +40,7 @@ app.delete('/authors/:id', deleteAuthorById)
 app.get('/authors', getAllAuthors)
 
 // BOOKS
-app.get('/books', )
+app.get('/books', getAllBooks)
 app.post('/books', auth, createBooks)
 app.put('/books', )
 app.delete('/books', )
