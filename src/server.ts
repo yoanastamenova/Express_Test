@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { createAuthor, deleteAuthorById, getAllAuthors, updateAuthorById } from './controllers/auto.controller';
 import { createBooks, getAllBooks } from './controllers/books.controller';
-import { getAllUsers, getUserProfile, getUserFavouritesBooks } from './controllers/users.controller';
+import { getAllUsers, getUserProfile, getUserFavouritesBooks, updateUser } from './controllers/users.controller';
 import { AppDataSource } from './database/db';
 import { auth } from './middlewares/auth';
 import { register, login } from './controllers/auth.controller';
@@ -48,9 +48,10 @@ app.delete('/books', )
 // USER
 
 app.get('/user', auth, isAdmin, getAllUsers);
-app.get('/users/myprofile', auth, getUserProfile);
+app.get('/users/profile', auth, getUserProfile);
 app.get('/users/favourites', auth, getUserFavouritesBooks)
 app.post('/users/addFavourite', auth, addFavouriteBook)
+app.put('/users/update', auth, updateUser)
 
 //FAVOURITES 
 

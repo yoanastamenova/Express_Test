@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../database/models/User";
+import bcrypt from 'bcrypt';
 
 export const createUser =  (req: Request, res: Response) => {
     console.log(req.body);
@@ -129,5 +130,37 @@ export const getUserFavouritesBooks = async (req: Request, res: Response) => {
             error: error
         })
         
+    }
+}
+
+export const updateUser = async (req: Request, res: Response) => {
+    try {
+       console.log(req.tokenData.id, req.body);
+
+       const user = User.update(
+        {
+            id: req.tokenData.id
+        },
+        {
+            name: req.body.name,
+            email: req.body.email
+        }
+       )
+
+       res.json(
+        {
+            success: true,
+            message: "Profile updated",
+            data: user
+        }
+       )
+       
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "User cannot be updated!",
+            error: error
+        });
     }
 }
